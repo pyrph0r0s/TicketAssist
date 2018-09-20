@@ -1,0 +1,48 @@
+{
+
+    "manifest_version": 2,
+    "name": "Ticket Assist",
+    "description": "Firefox extension to help with ticket handling.",
+    "version": "1.0",
+    "applications": {
+      "gecko": {
+        "strict_min_version": "54.0a1"
+      }
+    },
+  
+    "sidebar_action": {
+      "default_icon": "res/icon.png",
+      "default_title" : "TicketAssist",
+      "default_panel": "sidebar/panel.html"
+    },
+  
+    "permissions": [
+        "contextMenus",
+        "storage",
+        "tabs",
+        "clipboardWrite"
+    ],
+  
+    "commands": {
+      "pull_data": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+Y"
+        },
+        "description": "Pulls available data from ticket"
+      },
+      "push_data": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+U"
+        },
+        "description": "Pushes available data to ticket"
+      }
+    },
+
+    "content_scripts": [
+        {
+          "matches": ["https://developer.mozilla.org/*"],
+          "js": ["scripts/remedy.js"]
+        }
+      ]
+  
+  }
